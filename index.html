@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>2026 Records of Calgary</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* ---------- Base ---------- */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: #ffffff;
+      color: #222;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* ---------- Header ---------- */
+    header {
+      height: 45vh;
+      min-height: 280px;
+      background: linear-gradient(135deg, #2e3941, #46555f);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 28px 16px;
+    }
+
+    header h1 {
+      font-size: clamp(2.1rem, 6vw, 3.8rem);
+      margin-bottom: 1.2rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      line-height: 1.1;
+    }
+
+    .header-btn {
+      padding: 14px 28px;
+      background: white;
+      color: #2e3941;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    /* ---------- Nav ---------- */
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px 18px;
+      padding: 14px 16px;
+      border-bottom: 1px solid #eee;
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      font-size: 1.15rem;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 10px 14px;
+      touch-action: manipulation;
+    }
+
+    nav button.active {
+      border-bottom: 2px solid #2e3941;
+      font-weight: 600;
+    }
+
+    /* ---------- Pages ---------- */
+    .page {
+      display: none;
+      padding: 44px 24px;
+      max-width: 900px;
+      margin: auto;
+      font-size: 1.15rem;
+      line-height: 1.7;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    /* ---------- Certificate Style ---------- */
+    .certificate {
+      background: #fafafa;
+      border: 2px solid #ddd;
+      border-radius: 14px;
+      padding: 35px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+      text-align: center;
+      position: relative;
+    }
+
+    .certificate::before {
+      content: "OFFICIAL RECORD";
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      padding: 4px 14px;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      font-weight: 600;
+      color: #777;
+    }
+
+    .certificate img {
+      width: min(170px, 60vw);
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 10px;
+      background: #ddd;
+      margin-bottom: 20px;
+    }
+
+    .certificate h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0;
+      letter-spacing: 0.5px;
+    }
+
+    .certificate h3 {
+      font-size: 1.35rem;
+      font-weight: 500;
+      margin: 10px 0 18px;
+      color: #444;
+    }
+
+    .certificate p {
+      font-size: 1.1rem;
+      color: #444;
+    }
+
+    /* ---------- Mobile ---------- */
+    @media (max-width: 700px) {
+      header {
+        min-height: 220px;
+        height: auto;
+        padding: 26px 14px;
+      }
+
+      header h1 {
+        margin-bottom: 1rem;
+      }
+
+      .certificate {
+        padding: 25px;
+      }
+
+      .page {
+        padding: 32px 16px;
+        font-size: 1.05rem;
+      }
+
+      nav button {
+        font-size: 1.05rem;
+        padding: 10px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div>
+      <h1>2026 Records of Calgary</h1>
+      <div class="header-btn" onclick="showPage('records')">
+        View Records
+      </div>
+    </div>
+  </header>
+
+  <!-- NAV -->
+  <nav>
+    <button id="homeBtn" class="active" onclick="showPage('home')">Home</button>
+    <button id="recordsBtn" onclick="showPage('records')">Records</button>
+  </nav>
+
+  <!-- HOME -->
+  <section id="home" class="page active">
+    <h2>Welcome</h2>
+    <p>
+      Welcome to the official <strong>2026 Records of Calgary</strong>.
+      This site documents notable and humorous world-record-style achievements
+      made in Calgary during the year 2026.
+    </p>
+  </section>
+
+  <!-- RECORDS -->
+  <section id="records" class="page">
+    <div class="certificate">
+
+      <img src="https://via.placeholder.com/300" alt="Record image">
+
+      <h2>Oscar Magdich</h2>
+      <h3>First Person to Say “Cheslin Kolbe”</h3>
+
+      <p>
+        He was the very first person to say the name <strong>Cheslin Kolbe</strong>
+        in the big 2026.
+        <br><br>
+        <em>Footage Link Unavailable.</em>
+      </p>
+
+    </div>
+  </section>
+
+  <!-- JS -->
+  <script>
+    function showPage(page) {
+      document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+      document.getElementById(page).classList.add("active");
+
+      document.querySelectorAll("nav button").forEach(b => b.classList.remove("active"));
+      document.getElementById(page + "Btn").classList.add("active");
+    }
+  </script>
+
+</body>
+</html>
